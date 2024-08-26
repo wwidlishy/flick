@@ -1,11 +1,13 @@
 extends Control
 
-func _process(_delta):
-	var time: float = Level.time
-	var msec = fmod(time, 1) * 100
+var time: float = 0
+
+func _process(delta):
+	time += delta
+	var msec = fmod(time, 1) * 1000
 	var seconds = fmod(time, 60)
 	var minutes = fmod(time, 3600) / 60
-	$Minutes.text =  "[b]%02d:[/b]" % minutes
-	$Seconds.text =  "[b]%02d.[/b]" % seconds
-	$Msec.text =  "[b]%03d[/b]" % msec
+	$minutes.text =  "%02d:" % minutes
+	$seconds.text =  "%02d." % seconds
+	$miliseconds.text =  "%03d" % msec
 
